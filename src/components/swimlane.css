@@ -1,0 +1,4 @@
+.swimlane { flex:1;height:100%;background-color: red;margin-right:5px;display:flex;flex-direction: column;}
+.swimlane:last-child { flex:1;height:100%;background-color: red;margin-right:0px}
+.lanetitle { font-size:larger;background-color:yellow; padding:5px;}
+.laneBody { flex:1}
