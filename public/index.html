@@ -42,4 +42,33 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+
+  <script>
+    class JohnElement extends HTMLElement {
+      constructor(){
+        super(); 
+        this.title = "hello world"
+        this.root = this.attachShadow({mode:'open'})
+      }
+      connectedCallback(){
+        this.render(); 
+      }
+      changeTitle(val) {
+        this.title = val;
+        this.render(); 
+      }
+
+      setColor(color) {
+        console.log("kleur", color);
+      }
+      render(){
+        this.root.innerHTML = `
+        <style>
+          h1 { background-color:var(--main-color, red)}
+        </style>
+        <h1 onclick="() => this.setColor('yellow');">HEADER: ${this.title}</h1>`
+      }
+    }
+    customElements.define("john-element", JohnElement);
+    </script>
 </html>

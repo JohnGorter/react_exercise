@@ -2,14 +2,12 @@ import './App.css';
 import Header from './components/header'
 import Footer from './components/footer'
 import Content from './components/content'
-
+import Login from './components/login'
 
 function App() {
   return (
     <div className="App">
-      <Header></Header>
-      <Content className="john"></Content>
-      <Footer></Footer>
+      <Login></Login>
     </div>
   );
 }
