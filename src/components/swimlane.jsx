@@ -1,5 +1,7 @@
 import './swimlane.css'
 import { Component } from 'react'
+import PropTypes from 'prop-types';
+import Card from '../components/card'
 
 class swimlane extends Component {
     constructor(){
@@ -8,8 +10,9 @@ class swimlane extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.onClick = this.onClick.bind(this);
     }
-    handleChange({target}) {
-        this.setState({newcard:target.value});
+    handleChange({target, nativeEvent, ...rest}) {
+        //if (parseInt(nativeEvent.data) > -1) 
+       this.setState({newcard:target.value});
     }
     onClick(){
         this.props.addCard(this.state.newcard);
@@ -39,6 +42,12 @@ class swimlane extends Component {
     }
 }
 
+swimlane.propTypes = {
+    title: PropTypes.string.isRequired,
+    addCard: PropTypes.func.isRequired,
+    moveCard: PropTypes.func.isRequired,
+    children: PropTypes.arrayOf(PropTypes.object).isRequired
+}
 
 
 export default swimlane;
