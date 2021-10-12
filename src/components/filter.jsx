@@ -1,11 +1,12 @@
 import { Component } from 'react'
+import { connect } from 'react-redux'
+import { store, storeActions } from '../database/cardstore-redux'
 
-
-let Filter = ({filter}) => {
+let Filter = ({setFilter}) => {
     return (<div>
         <form onSubmit={(e) =>  {
             e.preventDefault();
-            filter(e.target.filter.value.toLowerCase())
+            setFilter(e.target.filter.value.toLowerCase())
         }}>
         { "filter on: "} <input type="text" name="filter"/>
         </form>
@@ -14,4 +15,6 @@ let Filter = ({filter}) => {
 }
 
 
-export default Filter;
+export default connect((state) => ({}), (dispatch) => ({
+    setFilter: (filter) => dispatch(storeActions.setFilter(filter))
+}))(Filter);
